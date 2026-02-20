@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Titre principal du site -->
     <title>Lab Expérimental</title>
 
@@ -25,24 +25,25 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: column;
         }
         h1 {
             text-align: center;
-            margin-bottom: 1em;
+            margin: 20px 0 10px 0;
         }
         p {
             text-align: center;
             max-width: 90%;
         }
-        /* Conteneur pour futures expériences et animations */
         .experiment-container {
             width: 90%;
             max-width: 600px;
-            margin-top: 2em;
+            margin: 0 auto 30px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        /* Styles spécifiques pour le carré quantique */
         #quantum-box {
             width: 120px;
             height: 120px;
@@ -59,13 +60,13 @@
             color: white;
             font-weight: bold;
         }
-        /* Texte pédagogique sous le carré */
         .quantum-legend {
-            text-align: center;
+            text-align: left;
             color: white;
             font-size: 14px;
             max-width: 90%;
-            margin: 10px auto;
+            margin: 15px 0;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -73,18 +74,21 @@
     <h1>Bienvenue dans Gantig-lab</h1>
     <p>Lab expérimental pour tester animations, idées et expériences quantiques en toute sécurité.</p>
 
-    <!-- Conteneur pour futures expériences / animations -->
     <div class="experiment-container" id="lab-experiments">
         <!-- Carré quantique dynamique -->
         <div id="quantum-box">
             <span id="quantum-text">Superposition</span>
         </div>
-        <!-- Texte pédagogique -->
+
+        <!-- Texte pédagogique vulgarisé avec conclusion -->
         <p class="quantum-legend">
-            Ce carré est en <strong>superposition</strong> : avant que tu ne touches, il peut être dans plusieurs états à la fois.  
-            Quand tu cliques dessus, tu le <strong>mesures</strong> : la couleur se fixe sur bleu ou rouge, comme si l'observation décidait de son état.  
-            C'est un exemple simple de la <strong>physique quantique</strong>, où l'acte d'observer influence le système !
+            Regarde ce carré : avant que tu touches, il peut être dans plusieurs couleurs en même temps.  
+            Quand tu cliques dessus, tu “mesures” sa couleur et il choisit définitivement bleu ou rouge.  
+            C’est un peu comme en physique quantique : certaines choses n’ont pas d’état précis tant qu’on ne regarde pas.  
+            Chaque clic est un nouvel essai : le résultat peut changer, et on ne peut pas le prédire exactement avant la mesure.  
+            Cette expérience simple te montre que dans le monde quantique, <strong>observer change ce qui se passe</strong> !
         </p>
+
         <p style="text-align:center; color:white; font-size:14px;">
             Clique sur le carré pour mesurer et fixer l'état
         </p>
@@ -104,19 +108,18 @@
             animationInterval = setInterval(() => {
                 const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
                 box.style.background = randomColor;
-            }, 200); // changement toutes les 0.2s
+            }, 200);
         }
 
-        // Démarrage de l'animation
         startSuperposition();
 
         // Quand l’utilisateur “observe” en cliquant/touchant
         box.addEventListener('click', () => {
-            clearInterval(animationInterval); // stop animation
+            clearInterval(animationInterval);
             const chosen = states[Math.floor(Math.random() * states.length)];
-            box.style.background = chosen;      // fixe l’état
-            box.style.filter = 'blur(0px)';     // plus de flou
-            text.textContent = chosen === '#1E90FF' ? 'Bleu' : 'Rouge'; // texte
+            box.style.background = chosen;
+            box.style.filter = 'blur(0px)';
+            text.textContent = chosen === '#1E90FF' ? 'Bleu' : 'Rouge';
         });
     </script>
 </body>
