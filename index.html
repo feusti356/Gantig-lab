@@ -59,6 +59,14 @@
             color: white;
             font-weight: bold;
         }
+        /* Texte pédagogique sous le carré */
+        .quantum-legend {
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            max-width: 90%;
+            margin: 10px auto;
+        }
     </style>
 </head>
 <body>
@@ -71,6 +79,12 @@
         <div id="quantum-box">
             <span id="quantum-text">Superposition</span>
         </div>
+        <!-- Texte pédagogique -->
+        <p class="quantum-legend">
+            Ce carré est en <strong>superposition</strong> : avant que tu ne touches, il peut être dans plusieurs états à la fois.  
+            Quand tu cliques dessus, tu le <strong>mesures</strong> : la couleur se fixe sur bleu ou rouge, comme si l'observation décidait de son état.  
+            C'est un exemple simple de la <strong>physique quantique</strong>, où l'acte d'observer influence le système !
+        </p>
         <p style="text-align:center; color:white; font-size:14px;">
             Clique sur le carré pour mesurer et fixer l'état
         </p>
@@ -106,4 +120,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
