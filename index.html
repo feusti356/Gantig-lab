@@ -36,11 +36,28 @@
             text-align: center;
             max-width: 90%;
         }
-        /* Placeholder pour futures animations et expériences */
+        /* Conteneur pour futures expériences et animations */
         .experiment-container {
             width: 90%;
             max-width: 600px;
             margin-top: 2em;
+        }
+        /* Styles spécifiques pour le carré quantique */
+        #quantum-box {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #888, #ccc);
+            filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 30px auto;
+            border-radius: 10px;
+        }
+        #quantum-text {
+            color: white;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -50,14 +67,43 @@
 
     <!-- Conteneur pour futures expériences / animations -->
     <div class="experiment-container" id="lab-experiments">
-        <!-- Ici seront ajoutées les animations ou expériences interactives -->
+        <!-- Carré quantique dynamique -->
+        <div id="quantum-box">
+            <span id="quantum-text">Superposition</span>
+        </div>
+        <p style="text-align:center; color:white; font-size:14px;">
+            Clique sur le carré pour mesurer et fixer l'état
+        </p>
     </div>
 
-    <!-- Placeholder scripts -->
+    <!-- Scripts pour expériences quantiques -->
     <script>
-        // Scripts futurs pour expériences quantiques
-        // Toujours insérer ici pour respecter la structure stable
-        console.log("Gantig-lab prêt pour expériences.");
+        const box = document.getElementById('quantum-box');
+        const text = document.getElementById('quantum-text');
+
+        // Couleurs possibles pour l’état final
+        const states = ['#1E90FF', '#FF4500']; // Bleu ou rouge
+
+        // Animation aléatoire avant le clic pour montrer superposition
+        let animationInterval;
+        function startSuperposition() {
+            animationInterval = setInterval(() => {
+                const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+                box.style.background = randomColor;
+            }, 200); // changement toutes les 0.2s
+        }
+
+        // Démarrage de l'animation
+        startSuperposition();
+
+        // Quand l’utilisateur “observe” en cliquant/touchant
+        box.addEventListener('click', () => {
+            clearInterval(animationInterval); // stop animation
+            const chosen = states[Math.floor(Math.random() * states.length)];
+            box.style.background = chosen;      // fixe l’état
+            box.style.filter = 'blur(0px)';     // plus de flou
+            text.textContent = chosen === '#1E90FF' ? 'Bleu' : 'Rouge'; // texte
+        });
     </script>
 </body>
-</html>
+</html> 
