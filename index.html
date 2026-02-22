@@ -4,17 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Titre principal du site -->
     <title>Lab Expérimental</title>
 
-    <!-- Favicon classique pour onglets navigateur -->
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- Icône et titre spécifiques pour iPhone écran d’accueil -->
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="apple-mobile-web-app-title" content="Lab Expérimental">
 
-    <!-- Styles principaux pour stabilité et affichage minimal -->
     <style>
         body {
             background-color: black;
@@ -22,105 +17,116 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-        }
-        h1 {
             text-align: center;
-            margin: 20px 0 10px 0;
         }
-        p {
-            text-align: center;
-            max-width: 90%;
-        }
-        .experiment-container {
-            width: 90%;
+
+        .container {
             max-width: 600px;
-            margin: 0 auto 30px auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: auto;
+            padding: 20px;
         }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin: 25px 0;
+            line-height: 1.6;
+        }
+
+        .action {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
         #quantum-box {
             width: 120px;
             height: 120px;
-            background: linear-gradient(45deg, #888, #ccc);
-            filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
             margin: 30px auto;
-            border-radius: 10px;
+            border-radius: 12px;
+            filter: blur(5px);
+            cursor: pointer;
         }
-        #quantum-text {
-            color: white;
-            font-weight: bold;
-        }
-        .quantum-legend {
-            text-align: left;
-            color: white;
-            font-size: 14px;
-            max-width: 90%;
-            margin: 15px 0;
-            line-height: 1.5;
+
+        .conclusion {
+            margin-top: 30px;
+            font-style: italic;
         }
     </style>
 </head>
+
 <body>
+
+<div class="container">
+
     <h1>Bienvenue dans Gantig-lab</h1>
-    <p>Lab expérimental pour tester animations, idées et expériences quantiques en toute sécurité.</p>
 
-    <div class="experiment-container" id="lab-experiments">
-        <!-- Carré quantique dynamique -->
-        <div id="quantum-box">
-            <span id="quantum-text">Superposition</span>
-        </div>
-
-        <!-- Texte pédagogique vulgarisé avec conclusion -->
-        <p class="quantum-legend">
-            Regarde ce carré : avant que tu touches, il peut être dans plusieurs couleurs en même temps.  
-            Quand tu cliques dessus, tu “mesures” sa couleur et il choisit définitivement bleu ou rouge.  
-            C’est un peu comme en physique quantique : certaines choses n’ont pas d’état précis tant qu’on ne regarde pas.  
-            Chaque clic est un nouvel essai : le résultat peut changer, et on ne peut pas le prédire exactement avant la mesure.  
-            Cette expérience simple te montre que dans le monde quantique, <strong>observer change ce qui se passe</strong> !
-        </p>
-
-        <p style="text-align:center; color:white; font-size:14px;">
-            Clique sur le carré pour mesurer et fixer l'état
-        </p>
+    <div class="section">
+        Laboratoire expérimental pour explorer des idées quantiques simples.
     </div>
 
-    <!-- Scripts pour expériences quantiques -->
-    <script>
-        const box = document.getElementById('quantum-box');
-        const text = document.getElementById('quantum-text');
+    <div class="section">
+        <strong>Objectif :</strong><br>
+        Cette expérience montre comment l’observation peut influencer ce que l’on voit.
+    </div>
 
-        // Couleurs possibles pour l’état final
-        const states = ['#1E90FF', '#FF4500']; // Bleu ou rouge
+    <div class="section">
+        Regarde le carré.<br>
+        Avant que tu le touches, il semble pouvoir être dans plusieurs états à la fois.
+    </div>
 
-        // Animation aléatoire avant le clic pour montrer superposition
-        let animationInterval;
-        function startSuperposition() {
-            animationInterval = setInterval(() => {
-                const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
-                box.style.background = randomColor;
-            }, 200);
-        }
+    <div class="action">
+        ➤ Clique sur le carré
+    </div>
 
-        startSuperposition();
+    <div id="quantum-box"></div>
 
-        // Quand l’utilisateur “observe” en cliquant/touchant
-        box.addEventListener('click', () => {
-            clearInterval(animationInterval);
-            const chosen = states[Math.floor(Math.random() * states.length)];
-            box.style.background = chosen;
-            box.style.filter = 'blur(0px)';
-            text.textContent = chosen === '#1E90FF' ? 'Bleu' : 'Rouge';
-        });
-    </script>
+    <div class="section">
+        En cliquant, tu “mesures” son état.<br>
+        Le carré choisit alors une couleur : bleu ou rouge.
+    </div>
+
+    <div class="section">
+        Dans le monde quantique, certaines choses n’ont pas d’état défini tant qu’on ne les observe pas.
+    </div>
+
+    <div class="section">
+        Chaque clic est un nouvel essai.<br>
+        Le résultat peut changer et ne peut pas être prévu à l’avance.
+    </div>
+
+    <div class="conclusion">
+        Observer ne sert pas seulement à voir…<br>
+        Observer peut aussi modifier ce qui se passe.
+    </div>
+
+</div>
+
+<script>
+    const box = document.getElementById('quantum-box');
+
+    const states = ['#1E90FF', '#FF4500'];
+
+    let animationInterval;
+
+    function startSuperposition() {
+        animationInterval = setInterval(() => {
+            const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+            box.style.background = randomColor;
+        }, 200);
+    }
+
+    startSuperposition();
+
+    box.addEventListener('click', () => {
+        clearInterval(animationInterval);
+        const chosen = states[Math.floor(Math.random() * states.length)];
+        box.style.background = chosen;
+        box.style.filter = 'blur(0px)';
+    });
+</script>
+
 </body>
 </html>
