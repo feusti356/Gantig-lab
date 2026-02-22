@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gantig-lab : Jeton quantique</title>
+<link rel="apple-touch-icon" href="images/jeton.png">
+<style>
+  body { font-family: sans-serif; padding: 20px; text-align: center; }
+  h1 { color: #333; }
+  #jeton { 
+    width: 100px; height: 100px; margin: 20px auto; 
+    border-radius: 50%; background-color: gray; 
+    display: flex; justify-content: center; align-items: center; 
+    font-size: 18px; color: white; cursor: pointer;
+  }
+  #result { font-size: 24px; margin-top: 20px; }
+  a { display: block; margin-top: 30px; color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>Expérience du jeton quantique</h1>
+<p>Le jeton est en superposition. Clique dessus pour mesurer !</p>
+
+<div id="jeton">?</div>
+<div id="result"></div>
+
+<a href="index.html">← Retour à l’expérience du carré</a>
+
+<script>
+  const jeton = document.getElementById('jeton');
+  const result = document.getElementById('result');
+
+  jeton.addEventListener('click', () => {
+    const etat = Math.random() < 0.5 ? 'Face' : 'Pile';
+    jeton.textContent = etat;
+    jeton.style.backgroundColor = etat === 'Face' ? 'red' : 'blue';
+    result.textContent = `Résultat de la mesure : ${etat}`;
+  });
+</script>
+
+</body>
+</html>
