@@ -2,136 +2,134 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<title>Gantig-lab</title>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lab Expérimental</title>
+<!-- Mode application iPhone -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gantig-lab">
 
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-<meta name="apple-mobile-web-app-title" content="Lab Expérimental">
+<!-- Icône -->
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Gantig-lab/Gantig-lab/main/icon.png">
 
 <style>
+
 body {
-    background-color: black;
-    color: white;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
+  margin:0;
+  padding:0;
+  font-family: Arial, sans-serif;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+}
+
+.container {
+  max-width:700px;
+  margin:auto;
+  padding:30px 20px;
 }
 
 h1 {
-    margin-bottom: 10px;
+  margin-bottom:5px;
 }
 
-h2 {
-    margin-top: 30px;
-    color: #aaaaaa;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.subtitle {
+  font-style:italic;
+  margin-bottom:25px;
+  opacity:0.8;
 }
 
-.section {
-    margin: 15px 0;
-    line-height: 1.6;
+.section-title {
+  font-size:22px;
+  margin-top:20px;
+  color:#38bdf8;
 }
 
-.action {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 25px 0;
-}
-
-#quantum-box {
-    width: 120px;
-    height: 120px;
-    margin: 30px auto;
-    border-radius: 12px;
-    filter: blur(5px);
-    cursor: pointer;
+.text-block {
+  margin-top:18px;
+  line-height:1.6;
 }
 
 .conclusion {
-    margin-top: 30px;
-    font-style: italic;
-    font-size: 16px;
+  margin-top:25px;
+  font-weight:bold;
+  color:#38bdf8;
 }
+
+#square {
+  width:150px;
+  height:150px;
+  margin:30px auto;
+  background: linear-gradient(45deg, red, blue);
+  border-radius:10px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>Bienvenue dans Gantig-lab</h1>
 
-<div class="section">
-Lab expérimental pour explorer des idées quantiques simples.
+<div class="subtitle">
+Lab expérimental pour tester animations, idées et expériences quantiques en toute sécurité.
 </div>
 
-<h2>Objectif de l'expérience</h2>
-<div class="section">
-Voir comment le simple fait d’observer peut influencer un résultat.
+<div class="section-title">
+Expérience 1 : Le Carré Quantique
 </div>
 
-<h2>Observation</h2>
-<div class="section">
-Regarde le carré.<br>
-Avant que tu le touches, il peut être dans plusieurs états à la fois.
+<div class="text-block">
+Regarde ce carré : avant que tu touches, il peut être dans plusieurs couleurs en même temps.
 </div>
 
-<h2>Action</h2>
-<div class="action">
-➤ Clique sur le carré
+<div class="text-block">
+Quand tu cliques dessus, tu "mesures" sa couleur et il choisit définitivement bleu ou rouge.
 </div>
 
-<div id="quantum-box"></div>
-
-<h2>Résultat</h2>
-<div class="section">
-En cliquant, tu “mesures” son état.<br>
-Le carré choisit alors une couleur : bleu ou rouge.
+<div class="text-block">
+C'est un peu comme en physique quantique : certaines choses n'ont pas d'état précis tant qu'on ne regarde pas.
 </div>
 
-<h2>Interprétation</h2>
-<div class="section">
-Dans le monde quantique, certaines choses n’ont pas d’état précis tant qu’on ne les observe pas.
+<div class="text-block">
+Chaque clic est un nouvel essai : le résultat peut changer, et on ne peut pas le prédire exactement avant la mesure.
 </div>
 
-<h2>Conséquence</h2>
-<div class="section">
-Chaque clic est un nouvel essai.<br>
-Le résultat peut changer et ne peut pas être prévu à l’avance.
+<div class="text-block">
+Cette expérience simple te montre que dans le monde quantique, observer change ce qui se passe.
 </div>
 
-<h2>Conclusion</h2>
 <div class="conclusion">
-Observer ne sert pas seulement à voir…<br>
-Observer peut aussi modifier ce qui se passe.
+Clique sur le carré pour mesurer et fixer l'état.
+</div>
+
+<div id="square"></div>
+
 </div>
 
 <script>
-const box = document.getElementById('quantum-box');
 
-const states = ['#1E90FF', '#FF4500'];
+const square = document.getElementById("square");
 
-let animationInterval;
+square.addEventListener("click", () => {
 
-function startSuperposition() {
-    animationInterval = setInterval(() => {
-        const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
-        box.style.background = randomColor;
-    }, 200);
-}
+    const random = Math.random();
 
-startSuperposition();
+    if(random < 0.5){
+        square.style.background = "red";
+    } else {
+        square.style.background = "blue";
+    }
 
-box.addEventListener('click', () => {
-    clearInterval(animationInterval);
-    const chosen = states[Math.floor(Math.random() * states.length)];
-    box.style.background = chosen;
-    box.style.filter = 'blur(0px)';
 });
+
 </script>
 
 </body>
-</html>
+</html> 
