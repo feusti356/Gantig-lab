@@ -1,131 +1,136 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lab Expérimental</title>
+<title>Lab Expérimental</title>
 
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <meta name="apple-mobile-web-app-title" content="Lab Expérimental">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="apple-mobile-web-app-title" content="Lab Expérimental">
 
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
 
-        .container {
-            max-width: 600px;
-            margin: auto;
-            padding: 20px;
-        }
+h1 {
+    margin-bottom: 10px;
+}
 
-        h1 {
-            margin-bottom: 10px;
-        }
+h2 {
+    margin-top: 30px;
+    color: #aaaaaa;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .section {
-            margin: 25px 0;
-            line-height: 1.6;
-        }
+.section {
+    margin: 15px 0;
+    line-height: 1.6;
+}
 
-        .action {
-            font-size: 18px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
+.action {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 25px 0;
+}
 
-        #quantum-box {
-            width: 120px;
-            height: 120px;
-            margin: 30px auto;
-            border-radius: 12px;
-            filter: blur(5px);
-            cursor: pointer;
-        }
+#quantum-box {
+    width: 120px;
+    height: 120px;
+    margin: 30px auto;
+    border-radius: 12px;
+    filter: blur(5px);
+    cursor: pointer;
+}
 
-        .conclusion {
-            margin-top: 30px;
-            font-style: italic;
-        }
-    </style>
+.conclusion {
+    margin-top: 30px;
+    font-style: italic;
+    font-size: 16px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<h1>Bienvenue dans Gantig-lab</h1>
 
-    <h1>Bienvenue dans Gantig-lab</h1>
+<div class="section">
+Lab expérimental pour explorer des idées quantiques simples.
+</div>
 
-    <div class="section">
-        Laboratoire expérimental pour explorer des idées quantiques simples.
-    </div>
+<h2>Objectif de l'expérience</h2>
+<div class="section">
+Voir comment le simple fait d’observer peut influencer un résultat.
+</div>
 
-    <div class="section">
-        <strong>Objectif :</strong><br>
-        Cette expérience montre comment l’observation peut influencer ce que l’on voit.
-    </div>
+<h2>Observation</h2>
+<div class="section">
+Regarde le carré.<br>
+Avant que tu le touches, il peut être dans plusieurs états à la fois.
+</div>
 
-    <div class="section">
-        Regarde le carré.<br>
-        Avant que tu le touches, il semble pouvoir être dans plusieurs états à la fois.
-    </div>
+<h2>Action</h2>
+<div class="action">
+➤ Clique sur le carré
+</div>
 
-    <div class="action">
-        ➤ Clique sur le carré
-    </div>
+<div id="quantum-box"></div>
 
-    <div id="quantum-box"></div>
+<h2>Résultat</h2>
+<div class="section">
+En cliquant, tu “mesures” son état.<br>
+Le carré choisit alors une couleur : bleu ou rouge.
+</div>
 
-    <div class="section">
-        En cliquant, tu “mesures” son état.<br>
-        Le carré choisit alors une couleur : bleu ou rouge.
-    </div>
+<h2>Interprétation</h2>
+<div class="section">
+Dans le monde quantique, certaines choses n’ont pas d’état précis tant qu’on ne les observe pas.
+</div>
 
-    <div class="section">
-        Dans le monde quantique, certaines choses n’ont pas d’état défini tant qu’on ne les observe pas.
-    </div>
+<h2>Conséquence</h2>
+<div class="section">
+Chaque clic est un nouvel essai.<br>
+Le résultat peut changer et ne peut pas être prévu à l’avance.
+</div>
 
-    <div class="section">
-        Chaque clic est un nouvel essai.<br>
-        Le résultat peut changer et ne peut pas être prévu à l’avance.
-    </div>
-
-    <div class="conclusion">
-        Observer ne sert pas seulement à voir…<br>
-        Observer peut aussi modifier ce qui se passe.
-    </div>
-
+<h2>Conclusion</h2>
+<div class="conclusion">
+Observer ne sert pas seulement à voir…<br>
+Observer peut aussi modifier ce qui se passe.
 </div>
 
 <script>
-    const box = document.getElementById('quantum-box');
+const box = document.getElementById('quantum-box');
 
-    const states = ['#1E90FF', '#FF4500'];
+const states = ['#1E90FF', '#FF4500'];
 
-    let animationInterval;
+let animationInterval;
 
-    function startSuperposition() {
-        animationInterval = setInterval(() => {
-            const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
-            box.style.background = randomColor;
-        }, 200);
-    }
+function startSuperposition() {
+    animationInterval = setInterval(() => {
+        const randomColor = `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
+        box.style.background = randomColor;
+    }, 200);
+}
 
-    startSuperposition();
+startSuperposition();
 
-    box.addEventListener('click', () => {
-        clearInterval(animationInterval);
-        const chosen = states[Math.floor(Math.random() * states.length)];
-        box.style.background = chosen;
-        box.style.filter = 'blur(0px)';
-    });
+box.addEventListener('click', () => {
+    clearInterval(animationInterval);
+    const chosen = states[Math.floor(Math.random() * states.length)];
+    box.style.background = chosen;
+    box.style.filter = 'blur(0px)';
+});
 </script>
 
 </body>
